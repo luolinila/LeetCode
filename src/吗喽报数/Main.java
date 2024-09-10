@@ -21,8 +21,8 @@ public class Main {
         while (list.size() > 1) {
             if (count == m ) {
                 list.remove(position);
-                for (int j = 0; j < list.size(); j++) {
-                    System.out.print(list.get(j) + " ");
+                for (Object o : list) {
+                    System.out.print(o + " ");
                 }
                 System.out.println();
                 count = 1;

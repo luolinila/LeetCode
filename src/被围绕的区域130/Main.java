@@ -4,13 +4,6 @@ public class Main {
     boolean[][] sign;
     public void solve(char[][] board) {
         sign = new boolean[board.length][board[0].length];
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[0].length; j++) {
-                if (board[i][j] == 'X') {
-                    sign[i][j] = true;
-                }
-            }
-        }
         for (int i = 0; i < board[0].length; i++) {
             dfs(board, 0, i);
         }

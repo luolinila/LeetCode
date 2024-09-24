@@ -12,7 +12,6 @@ public class Solution {
             }
             if (text.charAt(i) == pattern.charAt(0)) {
                 aCount++;
-                continue;
             }
         }
         return (long) count + Math.max(aCount, bCount);

@@ -1,28 +1,35 @@
 package 使二进制字符串字符交替的最少反转次数1888;
 
-public class Solution {
+class Solution {
     public int minFlips(String s) {
-        int len = s.length();
-        String a = "";
-        String b = "";
-        for (int i = 0; i < len; i++) {
-            a = a + (i % 2);
-            b = b + ((i + 1) % 2);
-        }
-        int min = Integer.MAX_VALUE;
-        for (int i = 0; i < len; i++) {
-            int counta = 0;
-            int countb = 0;
-            for (int j = 0; j < len; j++) {
-                if(a.charAt(j) != s.charAt((i + j) % len)){
-                    counta++;
-                }
-                if(b.charAt(j) != s.charAt((i + j) % len)){
-                    countb++;
-                }
+        String s2 = s+s;
+        int left = 0;
+        int currentNum1 = 0;
+        int currentNum2 = 0;
+        int ans = Integer.MAX_VALUE;
+        int k = s.length();
+
+        for(int right=0;right<s2.length();right++){
+            if((right%2==0&&s2.charAt(right)=='0')||(right%2==1&&s2.charAt(right)=='1')){
+                currentNum1 ++;
+            }else{
+                currentNum2 ++;
             }
-            min = Math.min(min, Math.min(counta, countb));
+
+            if(right-left+1<k){
+                continue;
+            }
+
+            ans = Math.min(Math.min(ans,currentNum1),currentNum2);
+
+            if((left%2==0&&s2.charAt(left)=='0')||(left%2==1&&s2.charAt(left)=='1')){
+                currentNum1 --;
+            }else{
+                currentNum2 --;
+            }
+            left++;
         }
-        return min;
+
+        return ans;
     }
 }
